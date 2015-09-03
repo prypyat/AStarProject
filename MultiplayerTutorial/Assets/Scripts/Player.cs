@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 
@@ -11,13 +12,18 @@ public class Player : MonoBehaviour
     private Vector3 syncStartPosition = Vector3.zero;
     private Vector3 syncEndPosition = Vector3.zero;
 
+    private Node _current;
+    private Node _target;
+
+    private List<Node> _path; 
+
     void OnSerializeNetworkView(BitStream stream, NetworkMessageInfo info)
     {
-        Vector3 syncPosition = Vector3.zero;
+        /*Vector3 syncPosition = Vector3.zero;
         Vector3 syncVelocity = Vector3.zero;
         if (stream.isWriting)
         {
-            syncPosition = rigidbody.position;
+            syncPosition = transform.position;
             stream.Serialize(ref syncPosition);
 
             syncPosition = rigidbody.velocity;
@@ -34,7 +40,7 @@ public class Player : MonoBehaviour
 
             syncEndPosition = syncPosition + syncVelocity * syncDelay;
             syncStartPosition = rigidbody.position;
-        }
+        }*/
     }
 
     void Awake()
@@ -44,18 +50,98 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (networkView.isMine)
+        /*if (networkView.isMine)
         {
             InputMovement();
+            UpdateMovement();
             InputColorChange();
+
         }
         else
         {
             SyncedMovement();
-        }
+        }*/
+
+        InputMovement();
+        UpdateMovement();
+        InputColorChange();
     }
 
+    private void InputMovement() {
 
+        if (Input.GetMouseButtonDown(0)) {
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            
+            if (Physics.Raycast(ray, out hit)) {
+
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Map")) {
+
+                    Node targetPoint = Level.Instance.Map.GetNode(Level.Instance.World2Grid(hit.point));
+
+                    if (targetPoint.Walkable) {
+                        
+                        Node startPoint = _target;
+
+                        bool fromStart = false;
+
+                        if (startPoint == null) {
+                            startPoint = _current;
+                            fromStart = true;
+                        }
+
+                        _path = Level.Instance.Astar.FindPath(startPoint, targetPoint);
+
+                        if (fromStart) {
+                            _path.RemoveAt(0);
+                        }
+
+                        _target = _path[0];
+                        _path.RemoveAt(0);
+                    }
+                    
+                }
+
+            }
+        }
+
+    }
+
+    private void UpdateMovement() {
+        
+        _current = Level.Instance.Map.GetNode(Level.Instance.World2Grid(transform.position));
+
+        if (_target == null) {
+            return;
+        }
+
+        Vector3 target = Level.Instance.Grid2World(_target.Position);
+
+        if (Vector3.Distance(target, transform.position) < 0.1f) {
+
+            _current = _target;
+
+            if (_path.Count > 0) {
+                _target = _path[0];
+                _path.RemoveAt(0);
+            } else {
+                _target = null;
+            }
+
+        }
+
+        if (_target != null) {
+
+            target = Level.Instance.Grid2World(_target.Position);
+
+            transform.position += (target - transform.position).normalized*(speed*0.01f);
+        }
+
+    }
+
+    /*
     private void InputMovement()
     {
         if (Input.GetKey(KeyCode.W))
@@ -70,12 +156,12 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
             rigidbody.MovePosition(rigidbody.position - Vector3.right * speed * Time.deltaTime);
     }
-
+    */
     private void SyncedMovement()
     {
         syncTime += Time.deltaTime;
 
-        rigidbody.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
+        //rigidbody.position = Vector3.Lerp(syncStartPosition, syncEndPosition, syncTime / syncDelay);
     }
 
 

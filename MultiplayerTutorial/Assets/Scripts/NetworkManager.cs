@@ -3,7 +3,7 @@ using System.Collections;
 
 public class NetworkManager : MonoBehaviour
 {
-    private const string typeName = "UniqueGameName";
+    /*private const string typeName = "UniqueGameName";
     private const string gameName = "RoomName";
 
     private bool isRefreshingHostList = false;
@@ -77,5 +77,5 @@ public class NetworkManager : MonoBehaviour
     private void SpawnPlayer()
     {
         Network.Instantiate(playerPrefab, Vector3.up * 1, Quaternion.identity, 0);
-    }
+    }*/
 }
