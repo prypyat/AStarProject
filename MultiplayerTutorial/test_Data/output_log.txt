@@ -1,0 +1,62 @@
+Initialize engine version: 4.0.0f7
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 10.18.13.5330]
+    Renderer: NVIDIA GeForce GTX 670M
+    Vendor:   NVIDIA
+    VRAM:     3021 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\UnityProjects\MultiplayerTutorial\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\UnityProjects\MultiplayerTutorial\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\UnityProjects\MultiplayerTutorial\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\UnityProjects\MultiplayerTutorial\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+- Completed reload, in  0.056 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Initialize engine version: 4.0.0f7
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 10.18.13.5330]
+    Renderer: NVIDIA GeForce GTX 670M
+    Vendor:   NVIDIA
+    VRAM:     3021 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\UnityProjects\MultiplayerTutorial\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\UnityProjects\MultiplayerTutorial\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\UnityProjects\MultiplayerTutorial\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\UnityProjects\MultiplayerTutorial\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+- Completed reload, in  0.042 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Failed to initialize network interface. Is the listen port already in use?
+ 
+(Filename: C:/BuildAgent/work/812c4f5049264fad/Runtime/Network/NetworkManager.cpp Line: 202)
+
+It's not possible to register a host until it is running.
+ 
+(Filename: C:/BuildAgent/work/812c4f5049264fad/Runtime/Network/MasterServerInterface.cpp Line: 587)
+
+Received pong from 192.168.56.1:25000
+ 
+(Filename: C:/BuildAgent/work/812c4f5049264fad/Runtime/Network/NetworkManager.cpp Line: 833)
+
+Received pong from 192.168.16.1:25000
+ 
+(Filename: C:/BuildAgent/work/812c4f5049264fad/Runtime/Network/NetworkManager.cpp Line: 833)
+
+Received pong from 192.168.71.1:25000
+ 
+(Filename: C:/BuildAgent/work/812c4f5049264fad/Runtime/Network/NetworkManager.cpp Line: 833)
+
+Received pong from 192.168.1.12:25000
+ 
+(Filename: C:/BuildAgent/work/812c4f5049264fad/Runtime/Network/NetworkManager.cpp Line: 833)
+
+The server has disconnected from the client. Most likely the server has shut down.
+ 
+(Filename: C:/BuildAgent/work/812c4f5049264fad/Runtime/Network/NetworkManager.cpp Line: 742)
+
